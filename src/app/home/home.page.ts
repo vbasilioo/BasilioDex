@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { IonInfiniteScroll, NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
 import { Pokemon } from 'src/interfaces/pokemon.interface';
@@ -23,6 +23,7 @@ export class HomePage implements OnInit{
   maxPage = 10;
 
   constructor(
+    private navCtrl: NavController,
     private pokemonService: PokemonService,
     private modalController: ModalController
   ) {}
@@ -87,5 +88,9 @@ export class HomePage implements OnInit{
         };
       });
     });
+  }
+
+  goToFavorites(){
+    this.navCtrl.navigateForward('favorites');
   }
 }

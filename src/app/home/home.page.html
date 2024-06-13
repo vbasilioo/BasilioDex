@@ -1,5 +1,14 @@
 <ion-content [fullscreen]="true">
-  <ion-searchbar animated="true" placeholder="Animated" placeholder="Pesquise um Pokemon" (ionChange)="onSearchChange($event)"></ion-searchbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button color="warning" (click)="goToFavorites()">Favoritos</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-searchbar animated="true" placeholder="Pesquise um Pokemon" (ionChange)="onSearchChange($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-list *ngIf="pokemon.length === 0">
     <ion-item *ngFor="let i of [1,2,3,4,5]">
@@ -23,7 +32,7 @@
         <ion-card class="center-card" (click)="openPokemonModal(poke)">
           <img alt="Pokemon" [src]="poke.image" />
           <ion-card-header>
-            <ion-card-title>{{ poke.name }}</ion-card-title>
+            <ion-card-title>{{ poke.name }}</ion-card-title> 
             <ion-card-subtitle>#{{ poke.pokeIndex }}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>

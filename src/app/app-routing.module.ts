@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'pokemon-modal',
     loadChildren: () => import('./pokemon-modal/pokemon-modal.module').then( m => m.PokemonModalPageModule)
   },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
+  },
 ];
 
 @NgModule({

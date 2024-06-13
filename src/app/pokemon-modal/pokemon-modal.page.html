@@ -11,7 +11,37 @@
     </ion-toolbar>
   </ion-header>
   
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+  <!-- FOTO -->
+  <div style="display: flex; justify-content: center; align-items: center; height: 50%;">
     <img src="{{ pokemon?.image }}" alt="Pokemon Image">
+  </div>
+
+  <!-- HABILIDADES -->
+  <div style="display: flex; flex-direction: row; align-items: center;">
+    <b>HABILIDADES: </b>
+    <div style="display: flex; flex-direction: row;">
+      <div *ngFor="let ability of pokemonDetails?.abilities; let isLast=last">
+        <p>{{ ability.ability.name }}<span *ngIf="!isLast">,</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIÊNCIA BASE -->
+  <div style="display: flex; flex-direction: row; align-items: center;">
+    <b>EXPERIÊNCIA BASE: </b>
+    <div style="display: flex; flex-direction: row;">
+      <p>{{ pokemonDetails?.base_experience }}</p>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div style="display: flex; flex-direction: row; align-items: center;">
+    <b>STATUS: </b>
+    <div style="display: flex; flex-direction: row;">
+      <div *ngFor="let stat of pokemonDetails?.stats">
+        <p>Base Stat: {{ stat.base_stat }}</p>
+        <p>Effort: {{ stat.effort }}</p>
+      </div>
+    </div>
   </div>
 </ion-content>
