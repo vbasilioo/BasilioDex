@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>Pokemons Favoritos</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,4 +13,10 @@
       <ion-title size="large">favorites</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let poke of favorites">
+      <ion-label>{{ poke.name }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

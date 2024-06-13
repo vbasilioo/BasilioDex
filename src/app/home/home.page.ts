@@ -1,14 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
-import { IonInfiniteScroll, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
 import { Pokemon } from 'src/interfaces/pokemon.interface';
-
-interface PokemonResult {
-  pokeIndex: number;
-  // Add other properties here if needed
-}
+import { FavoritesPokemonsService } from '../services/favorites-pokemons.service';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +21,8 @@ export class HomePage implements OnInit{
   constructor(
     private navCtrl: NavController,
     private pokemonService: PokemonService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private favoritesPokemons: FavoritesPokemonsService
   ) {}
 
   ngOnInit(): void {
@@ -92,5 +89,18 @@ export class HomePage implements OnInit{
 
   goToFavorites(){
     this.navCtrl.navigateForward('favorites');
+  }
+
+  toggleFavorite(pokemon: Pokemon) {
+  if (this.isFavorite(pokemon)) {
+    this.favoritesPokemons.removeFavorite(pokemon);
+  } else {
+    this.favoritesPokemons.addFavorite(pokemon);
+  }
+}
+
+  isFavorite(pokemon: Pokemon): boolean {
+    const favorites = this.favoritesPokemons.getFavorites();
+    return favorites.some(fav => fav.pokeIndex === pokemon.pokeIndex);
   }
 }

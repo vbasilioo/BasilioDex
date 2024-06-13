@@ -35,6 +35,11 @@
             <ion-card-title>{{ poke.name }}</ion-card-title> 
             <ion-card-subtitle>#{{ poke.pokeIndex }}</ion-card-subtitle>
           </ion-card-header>
+          <ion-card-content>
+            <ion-button fill="clear" (click)="toggleFavorite(poke); $event.stopPropagation()">
+              <ion-icon slot="icon-only" [name]="isFavorite(poke) ? 'star' : 'star-outline'"></ion-icon>
+            </ion-button>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
