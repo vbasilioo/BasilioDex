@@ -1,19 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>
-      Pokedex do Basílio
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-item *ngFor="let poke of pokemon">
-    <ion-avatar slot="start">
-      <img [src]="poke.image" style="background: #F2F2F2;" />
-    </ion-avatar>
-    <ion-label class="ion-text-capitalize">
-      <h2>{{ poke.name }}</h2>
-      <p>#{{ poke.pokeIndex }}</p>
-    </ion-label>
-  </ion-item>
+  <ion-searchbar animated="true" placeholder="Animated" placeholder="Pesquise um Pokemon" (ionChange)="onSearchChange($event)"></ion-searchbar>
+
+  <ion-list *ngIf="pokemon.length === 0">
+    <ion-item *ngFor="let i of [1,2,3,4,5]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label class="ion-text-capitalize">
+        <h2>
+          <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+        </h2>
+        <p>
+          <ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let poke of pokemon">
+        <ion-card class="center-card" (click)="openPokemonModal(poke)">
+          <img alt="Pokemon" [src]="poke.image" />
+          <ion-card-header>
+            <ion-card-title>{{ poke.name }}</ion-card-title>
+            <ion-card-subtitle>#{{ poke.pokeIndex }}</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-pagination [currentPage]="currentPage" [maxPage]="maxPage" (pageChange)="onPageChange($event)"></app-pagination>
 </ion-content>

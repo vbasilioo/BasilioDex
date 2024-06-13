@@ -1,0 +1,17 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+      Anterior
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons>
+    <ion-button [disabled]="currentPage === maxPage" (click)="goToPage(currentPage + 1)">
+      Próximo
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-button disabled>
+      Página: {{ currentPage }} / {{ maxPage }}
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>

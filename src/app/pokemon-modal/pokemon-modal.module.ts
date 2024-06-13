@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetailsPageRoutingModule } from './details-routing.module';
+import { PokemonModalPageRoutingModule } from './pokemon-modal-routing.module';
 
-import { DetailsPage } from './details.page';
+import { PokemonModalPage } from './pokemon-modal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailsPageRoutingModule
+    PokemonModalPageRoutingModule
   ],
-  declarations: [DetailsPage]
+  declarations: [PokemonModalPage]
 })
-export class DetailsPageModule {}
+export class PokemonModalPageModule {}

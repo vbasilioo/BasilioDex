@@ -12,8 +12,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home/:index',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+    path: 'pokemon-modal',
+    loadChildren: () => import('./pokemon-modal/pokemon-modal.module').then( m => m.PokemonModalPageModule)
   },
 ];
 

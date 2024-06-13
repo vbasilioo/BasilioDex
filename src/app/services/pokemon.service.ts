@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 interface PokemonResult {
+  id: number;
   name: string;
   url: string;
   image: string;
@@ -24,7 +25,7 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
   getPokemon(offset = 0) {
-    return this.http.get<PokemonAPIResponse>(`${this.baseUrl}/pokemon?offset=${offset}&limit=25`).pipe(
+    return this.http.get<PokemonAPIResponse>(`${this.baseUrl}/pokemon?offset=${offset}&limit=12`).pipe(
       map(response => {
         return response.results;
       }),
@@ -40,5 +41,27 @@ export class PokemonService {
 
   getPokemonImage(index: number){
     return `${this.imageUrl}${index}.png`;
+  }
+
+  findPokemon(search: string){
+    return this.http.get(`${this.baseUrl}/pokemon/${search}`).pipe(
+      map(pokemon => {
+        const typedPokemon = pokemon as PokemonResult;
+        typedPokemon.image = this.getPokemonImage(typedPokemon.id);
+        typedPokemon.pokeIndex = typedPokemon.id;
+        return typedPokemon;
+      })
+    );
+  }
+
+  getPokemonDetails(index: number){
+    return this.http.get(`${this.baseUrl}/pokemon/${index}`).pipe(
+      map(pokemon => {
+        const typedPokemon = pokemon as PokemonResult;
+        typedPokemon.image = this.getPokemonImage(typedPokemon.id);
+        typedPokemon.pokeIndex = typedPokemon.id;
+        return typedPokemon;
+      })
+    );
   }
 }

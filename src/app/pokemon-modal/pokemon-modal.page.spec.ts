@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DetailsPage } from './details.page';
+import { PokemonModalPage } from './pokemon-modal.page';
 
-describe('DetailsPage', () => {
-  let component: DetailsPage;
-  let fixture: ComponentFixture<DetailsPage>;
+describe('PokemonModalPage', () => {
+  let component: PokemonModalPage;
+  let fixture: ComponentFixture<PokemonModalPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailsPage);
+    fixture = TestBed.createComponent(PokemonModalPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
