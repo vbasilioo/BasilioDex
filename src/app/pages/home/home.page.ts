@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonService } from '../services/pokemon.service';
+import { PokemonService } from '../../services/pokemon.service';
 import { NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
 import { Pokemon } from 'src/interfaces/pokemon.interface';
-import { FavoritesPokemonsService } from '../services/favorites-pokemons.service';
+import { FavoritesPokemonsService } from '../../services/favorites-pokemons.service';
 
 @Component({
   selector: 'app-home',

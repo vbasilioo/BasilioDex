@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { PaginationComponent } from '../pagination/pagination.component';
-
+import { PaginationComponent } from '../../components/pagination/pagination.component';
 
 @NgModule({
   imports: [

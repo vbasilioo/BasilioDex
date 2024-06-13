@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams } from '@ionic/angular';
-import { Pokemon } from '../../interfaces/pokemon.interface';
-import { PokemonService } from '../services/pokemon.service';
+import { Pokemon } from '../../../interfaces/pokemon.interface';
+import { PokemonService } from '../../services/pokemon.service';
 import { PokemonDetails } from 'src/interfaces/pokemonDetails.interface';
 
 @Component({
