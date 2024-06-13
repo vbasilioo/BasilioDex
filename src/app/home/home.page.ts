@@ -50,6 +50,7 @@ export class HomePage implements OnInit{
   
     if(value == ''){
       this.offset = 0;
+      this.pokemon = [];
       this.loadPokemon();
       return;
     }
