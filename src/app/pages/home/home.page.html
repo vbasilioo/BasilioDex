@@ -38,7 +38,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-md="6" size-lg="4" *ngFor="let poke of pokemon">
-        <ion-card class="center-card" 
+        <ion-card class="center-card poke-card" 
               (click)="openPokemonModal(poke)" 
               [style.border]=" '2px solid ' + backgroundColors[poke.pokeIndex]" 
               [style.background]=" 'linear-gradient(to bottom, ' + backgroundColors[poke.pokeIndex] + ' 25%, transparent 0%)' ">

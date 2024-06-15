@@ -112,10 +112,6 @@ export class HomePage implements OnInit{
     });
   }
 
-  goToFavorites(){
-    this.navCtrl.navigateForward('favorites');
-  }
-
   toggleFavorite(pokemon: Pokemon) {
     if (this.isFavorite(pokemon)) {
       this.favoritesPokemons.removeFavorite(pokemon);

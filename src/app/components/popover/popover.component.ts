@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-popover',
@@ -8,12 +9,20 @@ import { PopoverController } from '@ionic/angular';
 })
 export class PopoverComponent {
 
-  constructor(private popoverController: PopoverController) { }
+  constructor(
+    private popoverController: PopoverController,
+    private navCtrl: NavController
+  ) { }
 
   close(option: string){
     this.popoverController.dismiss({
       dismissed: true,
       option
     });
+  }
+
+  goToFavorites(){
+    this.navCtrl.navigateForward('favorites');
+    this.close('favorites');
   }
 }
