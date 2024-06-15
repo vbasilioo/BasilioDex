@@ -5,6 +5,8 @@ import { ModalController } from '@ionic/angular';
 import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
 import { Pokemon } from 'src/interfaces/pokemon.interface';
 import { FavoritesPokemonsService } from '../../services/favorites-pokemons.service';
+import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
+import { PokemonDetails } from 'src/interfaces/pokemonDetails.interface';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +19,8 @@ export class HomePage implements OnInit{
   pokemon: Pokemon[] = [];
   currentPage = 1;
   maxPage = 10;
+  pokemonDetails: PokemonDetails[] = [];
+  backgroundColors: { [key: string]: string } = {};
 
   constructor(
     private navCtrl: NavController,
@@ -27,6 +31,25 @@ export class HomePage implements OnInit{
 
   ngOnInit(): void {
     this.loadPokemon();
+    this.loadAllPokemonDetails();
+  }
+
+  loadAllPokemonDetails() {
+    for (let i = 0; i <= this.maxPage; i++) {
+      this.pokemonService.getPokemonDetails(i).subscribe(res => {
+        this.pokemonDetails[i] = res;
+        this.backgroundColors[res.pokeIndex] = this.getColorByPokemonType(res);
+      });
+    }
+  }
+
+  getColorByPokemonType(pokemon: PokemonDetails): string {
+    if (!pokemon.types || pokemon.types.length === 0) 
+      return '#FFFFFF';
+  
+    const type = pokemon.types[0].type.name as PokemonType;
+    console.log(type);
+    return colorsPokemons[type] || '#FFFFFF';
   }
 
   loadPokemon(){
@@ -36,7 +59,7 @@ export class HomePage implements OnInit{
         ...res.map(poke => {
           return {
             ...poke,
-            pokeIndex: poke.pokeIndex.toString()
+            pokeIndex: poke.pokeIndex.toString(),
           };
         }),
       ];
@@ -76,7 +99,7 @@ export class HomePage implements OnInit{
 
   onPageChange(page: number){
     this.currentPage = page;
-    const offset = (page - 1) * 12;
+    const offset = (page - 1) * 9;
     this.pokemonService.getPokemon(Number(offset)).subscribe(pokemons => {
       this.pokemon = pokemons.map(poke => {
         return {

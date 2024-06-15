@@ -15,7 +15,16 @@
     <img src="{{ pokemon?.image }}" alt="Pokemon Image">
   </div>
 
-  <div style="display: flex; flex-direction: row; align-items: center;">
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <b>TIPO: </b>
+    <div style="display: flex; flex-direction: row;">
+      <div *ngFor="let ability of pokemonDetails?.types; let isLast=last">
+        <p>{{ ability.type.name }}<span *ngIf="!isLast">,</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
     <b>HABILIDADES: </b>
     <div style="display: flex; flex-direction: row;">
       <div *ngFor="let ability of pokemonDetails?.abilities; let isLast=last">
@@ -24,20 +33,31 @@
     </div>
   </div>
 
-  <div style="display: flex; flex-direction: row; align-items: center;">
-    <b>EXPERIÊNCIA BASE: </b>
-    <div style="display: flex; flex-direction: row;">
-      <p>{{ pokemonDetails?.base_experience }}</p>
-    </div>
+  <!-- Experiência -->
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding-top: 1rem;">
+      <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid #000; border-radius: 50px; overflow: hidden; position: relative;">
+        <div [style.width.%]="pokemonDetails && pokemonDetails.base_experience ? (pokemonDetails.base_experience / 6000) * 100 : 0" style="background-color: green; height: 20px;"></div>
+        <div [style.width.%]="pokemonDetails && pokemonDetails.base_experience ? 100 - ((pokemonDetails.base_experience / 6000) * 100) : 100" style="background-color: grey; height: 20px;"></div>
+        <span style="position: absolute; width: 100%; text-align: center; color: white; display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.base_experience}} xp</span>
+      </div>
   </div>
 
-  <div style="display: flex; flex-direction: row; align-items: center;">
-    <b>STATUS: </b>
-    <div style="display: flex; flex-direction: row;">
-      <div *ngFor="let stat of pokemonDetails?.stats">
-        <p>Base Stat: {{ stat.base_stat }}</p>
-        <p>Effort: {{ stat.effort }}</p>
+  <!-- Altura -->
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding-top: 1rem;">
+      <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid #000; border-radius: 50px; overflow: hidden; position: relative;">
+        <div [style.width.%]="pokemonDetails && pokemonDetails.height ? (pokemonDetails.height / 100) * 100 : 0" style="background-color: blue; height: 20px;"></div>
+        <div [style.width.%]="pokemonDetails && pokemonDetails.height ? 100 - ((pokemonDetails.height / 100) * 100) : 100" style="background-color: grey; height: 20px;"></div>
+        <span style="position: absolute; width: 100%; text-align: center; color: white; display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.height}} cm</span>
       </div>
-    </div>
   </div>
+
+  <!-- Peso -->
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding-top: 1rem;">
+      <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid #000; border-radius: 50px; overflow: hidden; position: relative;">
+        <div [style.width.%]="pokemonDetails && pokemonDetails.weight ? (pokemonDetails.weight / 9999.9) * 100 : 0" style="background-color: red; height: 20px;"></div>
+        <div [style.width.%]="pokemonDetails && pokemonDetails.weight ? 100 - ((pokemonDetails.weight / 9999.9) * 100) : 100" style="background-color: grey; height: 20px;"></div>
+        <span style="position: absolute; width: 100%; text-align: center; color: white; display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.weight}} g</span>
+      </div>
+  </div>
+
 </ion-content>
