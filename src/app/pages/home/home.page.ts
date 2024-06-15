@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-import { NavController } from '@ionic/angular';
+import { NavController, PopoverController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
 import { Pokemon } from 'src/interfaces/pokemon.interface';
 import { FavoritesPokemonsService } from '../../services/favorites-pokemons.service';
 import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
 import { PokemonDetails } from 'src/interfaces/pokemonDetails.interface';
+import { PopoverComponent } from 'src/app/components/popover/popover.component';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,8 @@ export class HomePage implements OnInit{
     private navCtrl: NavController,
     private pokemonService: PokemonService,
     private modalController: ModalController,
-    private favoritesPokemons: FavoritesPokemonsService
+    private favoritesPokemons: FavoritesPokemonsService,
+    private popoverController: PopoverController
   ) {}
 
   ngOnInit(): void {
@@ -115,15 +117,25 @@ export class HomePage implements OnInit{
   }
 
   toggleFavorite(pokemon: Pokemon) {
-  if (this.isFavorite(pokemon)) {
-    this.favoritesPokemons.removeFavorite(pokemon);
-  } else {
-    this.favoritesPokemons.addFavorite(pokemon);
+    if (this.isFavorite(pokemon)) {
+      this.favoritesPokemons.removeFavorite(pokemon);
+    } else {
+      this.favoritesPokemons.addFavorite(pokemon);
+    }
   }
-}
 
   isFavorite(pokemon: Pokemon): boolean {
     const favorites = this.favoritesPokemons.getFavorites();
     return favorites.some(fav => fav.pokeIndex === pokemon.pokeIndex);
+  }
+
+  async presentPopover(event: any){
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      event: event,
+      translucent: true
+    });
+
+    return await popover.present();
   }
 }

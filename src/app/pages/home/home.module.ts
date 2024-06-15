@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
+import { PopoverComponent } from 'src/app/components/popover/popover.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,9 @@ import { PaginationComponent } from '../../components/pagination/pagination.comp
   ],
   declarations: [
     HomePage,
-    PaginationComponent
+    PaginationComponent,
+    PopoverComponent,
   ]
 })
+
 export class HomePageModule {}
