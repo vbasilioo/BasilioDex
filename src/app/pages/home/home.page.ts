@@ -22,6 +22,7 @@ export class HomePage implements OnInit{
   maxPage = 10;
   pokemonDetails: PokemonDetails[] = [];
   backgroundColors: { [key: string]: string } = {};
+  error: any;
 
   constructor(
     private navCtrl: NavController,
@@ -37,7 +38,7 @@ export class HomePage implements OnInit{
   }
 
   loadAllPokemonDetails() {
-    for (let i = 0; i <= this.maxPage; i++) {
+    for (let i = 1; i <= this.maxPage; i++) {
       this.pokemonService.getPokemonDetails(i).subscribe(res => {
         this.pokemonDetails[i] = res;
         this.backgroundColors[res.pokeIndex] = this.getColorByPokemonType(res);

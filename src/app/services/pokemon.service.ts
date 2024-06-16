@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Pokemon } from 'src/interfaces/pokemon.interface';
 
 interface PokemonAPIResponse {
@@ -12,8 +13,8 @@ interface PokemonAPIResponse {
   providedIn: 'root'
 })
 export class PokemonService {
-  baseUrl = 'https://pokeapi.co/api/v2';
-  imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+  baseUrl = environment.BASE_URL;
+  imageUrl = environment.IMAGE_URL;
 
   constructor(private http: HttpClient) { }
 
