@@ -38,12 +38,20 @@ export class HomePage implements OnInit{
   ngOnInit(): void {
     this.loadPokemon();
     this.loadAllPokemonDetails();
+    this.loadAllPokemonColors();
   }
 
   loadAllPokemonDetails() {
     for (let i = 1; i <= this.maxPage; i++) {
       this.pokemonService.getPokemonDetails(i).subscribe(res => {
         this.pokemonDetails[i] = res;
+      });
+    }
+  }
+
+  loadAllPokemonColors(){
+    for(let i = 1; i <= 125; i++){
+      this.pokemonService.getPokemonDetails(i).subscribe(res => {
         this.backgroundColors[res.pokeIndex] = this.getColorByPokemonType(res);
       });
     }

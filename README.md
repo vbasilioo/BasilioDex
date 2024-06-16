@@ -84,10 +84,6 @@ Para rodar o projeto, siga os passos abaixo:
     ng test
     ```
 
-## Erros Documentados
-
-As cores, da forma que estou resgatando na PokeAPI, estão travando na 11ª; a API deles para de disponibilizar os tipos de pokemons e em algumas rotas de pokemon o type quebra, impedindo que todos os cards ficassem coloridos.
-
 ---
 
 Essa documentação fornece uma visão geral do BasilioDex, detalhando sua arquitetura, funcionalidades e instruções de uso. Para mais informações, sinta-se à vontade para explorar o código-fonte.
