@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController, PopoverController, ModalController } from '@ionic/angular';
+
 import { PokemonService } from '../../services/pokemons/pokemon.service';
-import { NavController, PopoverController } from '@ionic/angular';
-import { ModalController } from '@ionic/angular';
-import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
-import { Pokemon } from 'src/app/interfaces/pokemon.interface';
 import { FavoritesPokemonsService } from 'src/app/services/pokemons/favorites-pokemons.service';
-import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
-import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
-import { PopoverComponent } from 'src/app/components/popover/popover.component';
 import { ThemeService } from 'src/app/services/theme/theme.service';
+
+import { Pokemon } from 'src/app/interfaces/pokemon.interface';
+import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
+
+import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
+import { PopoverComponent } from 'src/app/components/popover/popover.component';
+
+import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
 import { formatPokemonName } from 'src/app/utils/formatPokemonName';
 
 @Component({
@@ -16,17 +19,19 @@ import { formatPokemonName } from 'src/app/utils/formatPokemonName';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
+  public readonly MAX_PAGE = 10;
+  public readonly MAX_COLOR = 125;
+  public CURRENT_PAGE = 1;
 
-  offset = 0;
-  pokemon: Pokemon[] = [];
-  currentPage = 1;
-  maxPage = 10;
-  pokemonDetails: PokemonDetails[] = [];
-  backgroundColors: { [key: string]: string } = {};
-  themeIcon = 'moon';
-  isDarkTheme = false;
-  error: any;
+  private offset = 0;
+  public themeIcon = 'moon';
+  private isDarkTheme = false;
+  private error: Error | undefined;
+
+  public pokemon: Pokemon[] = [];
+  public pokemonDetails: PokemonDetails[] = [];
+  public backgroundColors: { [key: string]: string } = {};
 
   constructor(
     private themeService: ThemeService,
@@ -42,23 +47,23 @@ export class HomePage implements OnInit{
     this.loadAllPokemonColors();
   }
 
-  loadAllPokemonDetails() {
-    for (let i = 1; i <= this.maxPage; i++) {
+  private loadAllPokemonDetails(): void {
+    for (let i = 1; i <= this.MAX_PAGE; i++) {
       this.pokemonService.getPokemonDetails(i).subscribe(res => {
         this.pokemonDetails[i] = res;
       });
     }
   }
 
-  loadAllPokemonColors(){
-    for(let i = 1; i <= 125; i++){
+  private loadAllPokemonColors(): void {
+    for(let i = 1; i <= this.MAX_COLOR; i++){
       this.pokemonService.getPokemonDetails(i).subscribe(res => {
         this.backgroundColors[res.pokeIndex] = this.getColorByPokemonType(res);
       });
     }
   }
 
-  getColorByPokemonType(pokemon: PokemonDetails): string {
+  private getColorByPokemonType(pokemon: PokemonDetails): string {
     if (!pokemon.types || pokemon.types.length === 0) 
       return '#FFFFFF';
   
@@ -66,7 +71,7 @@ export class HomePage implements OnInit{
     return colorsPokemons[type] || '#FFFFFF';
   }
 
-  loadPokemon(){
+  private loadPokemon(): void {
     this.pokemonService.getPokemon(this.offset).subscribe(res => {
       this.pokemon = [
         ...this.pokemon,
@@ -80,7 +85,7 @@ export class HomePage implements OnInit{
     });
   }
 
-  onSearchChange(event: CustomEvent){
+  public onSearchChange(event: CustomEvent): void {
     let value = event.detail.value;
   
     if(value == ''){
@@ -91,16 +96,16 @@ export class HomePage implements OnInit{
     }
   
     this.pokemonService.findPokemon(value).subscribe(res => {
-      this.pokemon = [{
-        ...res,
-        pokeIndex: res.pokeIndex.toString()
-      }];
+      this.pokemon = [res].map(poke => ({
+        ...poke,
+        pokeIndex: poke.pokeIndex.toString()
+      }));
     }, err => {
       this.pokemon = [];
     });
   }
 
-  async openPokemonModal(pokemon: Pokemon){
+  public async openPokemonModal(pokemon: Pokemon): Promise<void> {
     const modal = await this.modalController.create({
       component: PokemonModalPage,
       componentProps: {
@@ -111,20 +116,18 @@ export class HomePage implements OnInit{
     return await modal.present();
   }
 
-  onPageChange(page: number){
-    this.currentPage = page;
+  public onPageChange(page: number): void {
+    this.CURRENT_PAGE = page;
     const offset = (page - 1) * 9;
     this.pokemonService.getPokemon(Number(offset)).subscribe(pokemons => {
-      this.pokemon = pokemons.map(poke => {
-        return {
-          ...poke,
-          pokeIndex: poke.pokeIndex.toString()
-        };
-      });
+      this.pokemon = pokemons.map(poke => ({
+        ...poke,
+        pokeIndex: poke.pokeIndex.toString()
+      }));
     });
   }
 
-  toggleFavorite(pokemon: Pokemon) {
+  public toggleFavorite(pokemon: Pokemon): void {
     if (this.isFavorite(pokemon)) {
       this.favoritesPokemons.removeFavorite(pokemon);
     } else {
@@ -132,12 +135,12 @@ export class HomePage implements OnInit{
     }
   }
 
-  isFavorite(pokemon: Pokemon): boolean {
+  public isFavorite(pokemon: Pokemon): boolean {
     const favorites = this.favoritesPokemons.getFavorites();
     return favorites.some(fav => fav.pokeIndex === pokemon.pokeIndex);
   }
 
-  async presentPopover(event: any){
+  public async presentPopover(event: any): Promise<void> {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       event: event,
@@ -147,7 +150,7 @@ export class HomePage implements OnInit{
     return await popover.present();
   }
 
-  toggleTheme() {
+  public toggleTheme(): void {
     this.isDarkTheme = !this.isDarkTheme;
     this.themeService.setDarkTheme(this.isDarkTheme);
     this.themeIcon = this.isDarkTheme ? 'sunny' : 'moon';
