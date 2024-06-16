@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pokemon } from 'src/interfaces/pokemon.interface';
+import { Pokemon } from 'src/app/interfaces/pokemon.interface';
 
 @Injectable({
   providedIn: 'root'

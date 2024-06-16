@@ -3,10 +3,10 @@ import { PokemonService } from '../../services/pokemon.service';
 import { NavController, PopoverController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
-import { Pokemon } from 'src/interfaces/pokemon.interface';
+import { Pokemon } from 'src/app/interfaces/pokemon.interface';
 import { FavoritesPokemonsService } from '../../services/favorites-pokemons.service';
 import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
-import { PokemonDetails } from 'src/interfaces/pokemonDetails.interface';
+import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
 import { PopoverComponent } from 'src/app/components/popover/popover.component';
 
 @Component({
