@@ -30,34 +30,34 @@
   </div>
 
   <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding-top: 1rem;">
-    <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid white; border-radius: 50px; overflow: hidden; position: relative;">
+    <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid var(--ion-text-color); border-radius: 50px; overflow: hidden; position: relative;">
       <div [style.width.%]="pokemonDetails && pokemonDetails.stats && pokemonDetails.stats[0].base_stat ? (pokemonDetails.stats[0].base_stat / 100) * 100 : 0" style="background-color: red; height: 20px;"></div>
-      <span style="position: absolute; width: 100%; text-align: center; color: white; display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.base_experience}} HP</span>
+      <span style="position: absolute; width: 100%; text-align: center; color: var(--ion-text-color); display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.base_experience}} HP</span>
     </div>
-</div>
+  </div>
 
   <!-- Experiência -->
   <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding-top: 1rem;">
-      <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid white; border-radius: 50px; overflow: hidden; position: relative;">
-        <div [style.width.%]="pokemonDetails && pokemonDetails.base_experience ? (pokemonDetails.base_experience / 6000) * 100 : 0" style="background-color: green; height: 20px;"></div>
-        <span style="position: absolute; width: 100%; text-align: center; color: white; display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.base_experience}} xp</span>
-      </div>
+    <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid var(--ion-text-color); border-radius: 50px; overflow: hidden; position: relative;">
+      <div [style.width.%]="pokemonDetails && pokemonDetails.base_experience ? (pokemonDetails.base_experience / 6000) * 100 : 0" style="background-color: green; height: 20px;"></div>
+      <span style="position: absolute; width: 100%; text-align: center; color: var(--ion-text-color); display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.base_experience}} xp</span>
+    </div>
   </div>
-
+  
   <!-- Altura -->
   <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding-top: 1rem;">
-      <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid white; border-radius: 50px; overflow: hidden; position: relative;">
-        <div [style.width.%]="pokemonDetails && pokemonDetails.height ? (pokemonDetails.height / 100) * 100 : 0" style="background-color: blue; height: 20px;"></div>
-        <span style="position: absolute; width: 100%; text-align: center; color: white; display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.height}} cm</span>
-      </div>
+    <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid var(--ion-text-color); border-radius: 50px; overflow: hidden; position: relative;">
+      <div [style.width.%]="pokemonDetails && pokemonDetails.height ? (pokemonDetails.height / 100) * 100 : 0" style="background-color: blue; height: 20px;"></div>
+      <span style="position: absolute; width: 100%; text-align: center; color: var(--ion-text-color); display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.height}} cm</span>
+    </div>
   </div>
-
+  
   <!-- Peso -->
   <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding-top: 1rem;">
-      <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid white; border-radius: 50px; overflow: hidden; position: relative;">
-        <div [style.width.%]="pokemonDetails && pokemonDetails.weight ? (pokemonDetails.weight / 9999.9) * 100 : 0" style="background-color: gray; height: 20px;"></div>
-        <span style="position: absolute; width: 100%; text-align: center; color: white; display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.weight}} g</span>
-      </div>
+    <div style="display: flex; flex-direction: row; width: 250px; border: 1px solid var(--ion-text-color); border-radius: 50px; overflow: hidden; position: relative;">
+      <div [style.width.%]="pokemonDetails && pokemonDetails.weight ? (pokemonDetails.weight / 9999.9) * 100 : 0" style="background-color: gray; height: 20px;"></div>
+      <span style="position: absolute; width: 100%; text-align: center; color: var(--ion-text-color); display: flex; align-items: center; justify-content: center; padding-top: 2px;">{{pokemonDetails?.weight}} g</span>
+    </div>
   </div>
 
 </ion-content>
