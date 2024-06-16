@@ -9,6 +9,7 @@ import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
 import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
 import { PopoverComponent } from 'src/app/components/popover/popover.component';
 import { ThemeService } from 'src/app/services/theme/theme.service';
+import { formatPokemonName } from 'src/app/utils/formatPokemonName';
 
 @Component({
   selector: 'app-home',
