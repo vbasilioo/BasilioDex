@@ -1,2 +1,30 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+    --ion-color-primary: #3880ff;
+    --ion-color-primary-rgb: 56,128,255;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #3171e0;
+    --ion-color-primary-tint: #4c8dff;
+    --ion-background-color: #ffffff;
+    --ion-text-color: #000000;
+}
+
+body.dark {
+    --ion-color-primary: gold;
+    --ion-color-primary-rgb: 34,36,40;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #1e2023;
+    --ion-color-primary-tint: #383a3e;
+    --ion-background-color: #1e2023;
+    --ion-text-color: #ffffff;
+}
+
+body.dark ion-card-title,
+body.dark ion-card-subtitle {
+    color: #ffffff;
+}
+
+body.dark ion-icon[name="star"] {
+    color: #FFFF00;
+}

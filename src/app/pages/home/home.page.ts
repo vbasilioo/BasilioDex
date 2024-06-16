@@ -8,6 +8,7 @@ import { FavoritesPokemonsService } from '../../services/favorites-pokemons.serv
 import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
 import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
 import { PopoverComponent } from 'src/app/components/popover/popover.component';
+import { ThemeService } from 'src/app/services/theme/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +23,12 @@ export class HomePage implements OnInit{
   maxPage = 10;
   pokemonDetails: PokemonDetails[] = [];
   backgroundColors: { [key: string]: string } = {};
+  themeIcon = 'moon';
+  isDarkTheme = false;
   error: any;
 
   constructor(
-    private navCtrl: NavController,
+    private themeService: ThemeService,
     private pokemonService: PokemonService,
     private modalController: ModalController,
     private favoritesPokemons: FavoritesPokemonsService,
@@ -134,5 +137,11 @@ export class HomePage implements OnInit{
     });
 
     return await popover.present();
+  }
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    this.themeService.setDarkTheme(this.isDarkTheme);
+    this.themeIcon = this.isDarkTheme ? 'sunny' : 'moon';
   }
 }

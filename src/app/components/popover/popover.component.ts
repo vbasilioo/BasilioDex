@@ -25,4 +25,9 @@ export class PopoverComponent {
     this.navCtrl.navigateForward('favorites');
     this.close('favorites');
   }
+
+  goToPokemonsTypes(){
+    this.navCtrl.navigateForward('pokemons-types');
+    this.close('pokemons-types');
+  }
 }

@@ -6,15 +6,15 @@
         <ion-button (click)="presentPopover($event)">
           <ion-icon slot="icon-only" name="menu"></ion-icon>
         </ion-button>
+        <ion-button (click)="toggleTheme()">
+          <ion-icon slot="icon-only" [name]="themeIcon"></ion-icon>
+        </ion-button>
       </ion-buttons>
       <ion-title style="text-align: center;">
         <img src="assets/pokemon-logo.png" alt="Logo" style="max-width: 80px; max-height: 100px;">
       </ion-title>
       <ion-buttons slot="end">
         <ion-searchbar placeholder="Pesquise um Pokemon" (ionChange)="onSearchChange($event)"></ion-searchbar>
-        <ion-button>
-          <ion-icon slot="icon-only" name="search"></ion-icon>
-        </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>

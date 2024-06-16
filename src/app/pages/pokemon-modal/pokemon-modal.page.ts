@@ -32,5 +32,4 @@ export class PokemonModalPage implements OnInit{
   closeModal(){
     this.modalController.dismiss();
   }
-  
 }
