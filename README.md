@@ -84,4 +84,4 @@ Para rodar o projeto, siga os passos abaixo:
 
 ---
 
-Essa documentação fornece uma visão geral do BasilioDex, detalhando sua arquitetura, funcionalidades e instruções de uso. Para mais informações, sinta-se à vontade para explorar o código-fonte e contribuir para o projeto.
+Essa documentação fornece uma visão geral do BasilioDex, detalhando sua arquitetura, funcionalidades e instruções de uso. Para mais informações, sinta-se à vontade para explorar o código-fonte.
