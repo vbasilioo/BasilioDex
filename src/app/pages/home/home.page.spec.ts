@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { PokemonService } from 'src/app/services/pokemon.service';
+import { of } from 'rxjs'; 
 
 import { HomePage } from './home.page';
 
@@ -10,7 +13,19 @@ describe('HomePage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomePage],
-      imports: [IonicModule.forRoot()]
+      imports: [
+        IonicModule.forRoot(),
+        HttpClientTestingModule
+      ],
+      providers: [
+        {
+          provide: PokemonService,
+          useValue: jasmine.createSpyObj('PokemonService', { 
+            getPokemon: of({}),
+            getPokemonDetails: of({}) 
+          })
+        }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
@@ -18,7 +33,7 @@ describe('HomePage', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('[TESTE] Criação de Pokemon na Home Page', () => {
     expect(component).toBeTruthy();
   });
 });
