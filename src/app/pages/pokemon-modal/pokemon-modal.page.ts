@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { Pokemon } from '../../interfaces/pokemon.interface';
 import { PokemonService } from '../../services/pokemon.service';
 import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
@@ -16,7 +16,8 @@ export class PokemonModalPage implements OnInit{
   
   constructor(
     private navParams: NavParams,
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class PokemonModalPage implements OnInit{
         this.pokemonDetails = pokemon;
       });
     }
+  }
+
+  closeModal(){
+    this.modalController.dismiss();
   }
   
 }
