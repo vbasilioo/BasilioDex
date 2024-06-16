@@ -1,4 +1,6 @@
-# BasilioDex
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="BasilioDex Logo">
+</div>
 
 Olá, bem-vindo ao BasilioDex, uma PokeDex desenvolvida por [Vinícius Basilio](https://github.com/vbasilioo).
 
@@ -41,7 +43,7 @@ Utilizamos a configuração de environment recomendada pelo Angular para gerenci
 
 O projeto foi desenvolvido usando o **Ionic Framework**, o que permite uma fácil criação de aplicativos móveis híbridos. Além disso, foi adicionada responsividade ao projeto, garantindo que ele funcione bem em dispositivos móveis.
 
-## Como Usar?
+## Como usar?
 
 A BasilioDex inicia na Home, exibindo informações sobre todos os Pokémons disponíveis através da API (limitamos a 125 Pokémons para não sobrecarregar o frontend e as requisições da API). As funcionalidades principais incluem:
 
@@ -81,6 +83,10 @@ Para rodar o projeto, siga os passos abaixo:
     ```sh
     ng test
     ```
+
+## Erros Documentados
+
+As cores, da forma que estou resgatando na PokeAPI, estão travando na 11ª; a API deles para de disponibilizar os tipos de pokemons e em algumas rotas de pokemon o type quebra, impedindo que todos os cards ficassem coloridos.
 
 ---
 

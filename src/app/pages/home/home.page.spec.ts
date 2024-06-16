@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonService } from 'src/app/services/pokemons/pokemon.service';
 import { of, throwError } from 'rxjs'; 
 
 import { HomePage } from './home.page';

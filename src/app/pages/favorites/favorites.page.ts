@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/interfaces/pokemon.interface';
-import { FavoritesPokemonsService } from '../../services/favorites-pokemons.service';
+import { FavoritesPokemonsService } from 'src/app/services/pokemons/favorites-pokemons.service';
 
 @Component({
   selector: 'app-favorites',

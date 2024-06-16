@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { PokemonModalPage } from './pokemon-modal.page';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonService } from 'src/app/services/pokemons/pokemon.service';
 import { NavParams } from '@ionic/angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';

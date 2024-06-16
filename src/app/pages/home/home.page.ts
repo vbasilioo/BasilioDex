@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonService } from '../../services/pokemon.service';
+import { PokemonService } from '../../services/pokemons/pokemon.service';
 import { NavController, PopoverController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PokemonModalPage } from '../pokemon-modal/pokemon-modal.page';
 import { Pokemon } from 'src/app/interfaces/pokemon.interface';
-import { FavoritesPokemonsService } from '../../services/favorites-pokemons.service';
+import { FavoritesPokemonsService } from 'src/app/services/pokemons/favorites-pokemons.service';
 import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
 import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
 import { PopoverComponent } from 'src/app/components/popover/popover.component';
@@ -54,7 +54,6 @@ export class HomePage implements OnInit{
       return '#FFFFFF';
   
     const type = pokemon.types[0].type.name as PokemonType;
-    console.log(type);
     return colorsPokemons[type] || '#FFFFFF';
   }
 

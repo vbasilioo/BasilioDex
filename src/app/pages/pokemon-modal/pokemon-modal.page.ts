@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { Pokemon } from '../../interfaces/pokemon.interface';
-import { PokemonService } from '../../services/pokemon.service';
+import { PokemonService } from '../../services/pokemons/pokemon.service';
 import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
 
 @Component({
