@@ -51,9 +51,9 @@ A BasilioDex inicia na Home, exibindo informações sobre todos os Pokémons dis
 - **Área de Pesquisa**: Pesquise Pokémons pelo nome exato.
 - **Dropdown de Favoritos**: Acesse a página de favoritos dos seus Pokémons.
 
-## Vídeo e Imagens Demonstrativas
+## Vídeo Demonstrativo
 
--- Adicionar vídeo demonstrativo e imagens aqui--
+[![Assista ao vídeo no YouTube](https://img.youtube.com/vi/XDnM4cmpwlc/0.jpg)](https://www.youtube.com/watch?v=XDnM4cmpwlc)
 
 ### Funcionalidades dos Pokémons
 
@@ -63,7 +63,7 @@ A BasilioDex inicia na Home, exibindo informações sobre todos os Pokémons dis
 
 ### Pesquisa
 
-- **Pesquisa pelo Nome Exato**: Para encontrar um Pokémon, você deve pesquisar pelo nome exato, pois a API do Pokémon não suporta buscas parciais.
+- **Pesquisa pelo Nome Exato**: Para encontrar um Pokémon, você deve pesquisar pelo nome exato, pois a API do Pokémon não suporta buscas parciais e nem nomes em inglês.
 
 ## Rodando o Projeto
 
@@ -83,6 +83,12 @@ Para rodar o projeto, siga os passos abaixo:
     ```sh
     ng test
     ```
+
+## Atenção
+
+1. Caso você use um navegador (no computador ou celular) que force o tema a ficar escuro, recomendo que use o tema claro para realizar os testes, principalmente os testes de troca de tema.
+2. O vídeo pode ser um ou dois dias anterior a data de entrega e alguns detalhes podem ter sido alterados.
+3. Recomenda-se que os testes sejam realizados através do >> basilio-dex.vercel.app/home << para maior facilidade.
 
 ---
 
