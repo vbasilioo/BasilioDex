@@ -29,7 +29,7 @@ Embora o BasilioDex seja um projeto focado no frontend, se houvesse a necessidad
 
 ### Gerenciamento de Estado
 
-No projeto, não utilizamos RxJS para gerenciamento de estado devido ao escopo limitado do projeto. No entanto, para projetos maiores e escaláveis, o RxJS seria implementado para a manipulação de estados e dados dos usuários, aproveitando suas capacidades de programação reativa.
+No projeto, estamos utilizando RxJS para manipulação dos estados globais da aplicação. O RxJS nos permite gerenciar de forma eficiente os estados e dados dos usuários, aproveitando suas capacidades de programação reativa, o que é especialmente útil para projetos maiores e escaláveis.
 
 ### Testes Automatizados
 

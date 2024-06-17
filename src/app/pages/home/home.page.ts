@@ -13,6 +13,7 @@ import { PopoverComponent } from 'src/app/components/popover/popover.component';
 
 import { colorsPokemons, PokemonType } from 'src/app/utils/colors';
 import { formatPokemonName } from 'src/app/utils/formatPokemonName';
+import { PokemonStateService } from 'src/app/services/pokemons/pokemon-state.service';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +39,8 @@ export class HomePage implements OnInit {
     private pokemonService: PokemonService,
     private modalController: ModalController,
     private favoritesPokemons: FavoritesPokemonsService,
-    private popoverController: PopoverController
+    private popoverController: PopoverController,
+    private pokemonStateService: PokemonStateService
   ) {}
 
   ngOnInit(): void {
@@ -82,6 +84,7 @@ export class HomePage implements OnInit {
           };
         }),
       ];
+      this.pokemonStateService.changePokemonState(this.pokemon);
     });
   }
 

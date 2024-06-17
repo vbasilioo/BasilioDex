@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PokemonDetails } from 'src/app/interfaces/pokemonDetails.interface';
+import { PokemonStateService } from 'src/app/services/pokemons/pokemon-state.service';
+import { PokemonService } from 'src/app/services/pokemons/pokemon.service';
 
 @Component({
   selector: 'app-pokemons-types',
@@ -6,7 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./pokemons-types.page.scss'],
 })
 export class PokemonsTypesPage{
+  public pokemon: PokemonDetails[] = [];
 
-  constructor() { }
-
+  constructor(private pokemonStateService: PokemonStateService) { 
+    this.pokemonStateService.currentPokemonState.subscribe((pokemon: any) => {
+      this.pokemon = pokemon;
+      console.log(pokemon);
+    });
+  }
 }
